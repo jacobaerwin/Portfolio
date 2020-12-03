@@ -1,0 +1,37 @@
+package service;
+
+import model.BridgeEnum;
+import model.GamePiece;
+
+public class gamePieceService {
+
+	GamePiece farmer = new GamePiece(BridgeEnum.START), 
+			goose = new GamePiece(BridgeEnum.START),
+			rice = new GamePiece(BridgeEnum.START),
+			fox = new GamePiece(BridgeEnum.START);
+	
+	public boolean checkRiceAndGoose() {
+		if(goose.getPosition().equals(rice.getPosition())) {
+			return farmer.getPosition().equals(goose.getPosition());
+		}
+		return true;
+	}
+	
+	public boolean checkFoxAndGoose() {
+		if(goose.getPosition().equals(fox.getPosition())) {
+			return farmer.getPosition().equals(goose.getPosition());
+		}
+		return true;
+	}
+	
+	public boolean checkWin() {
+		if(
+			goose.getPosition().equals(BridgeEnum.FINISH)
+			&& rice.getPosition().equals(BridgeEnum.FINISH)
+			&& fox.getPosition().equals(BridgeEnum.FINISH)
+				) {
+			return true;
+		}
+		return false;
+	}
+}

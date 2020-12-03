@@ -1,0 +1,10 @@
+package model;
+
+public class GamePiece {
+
+	private BridgeEnum position = BridgeEnum.START;
+	
+	public BridgeEnum getPoisiton() {
+		return this.position;
+	}
+}

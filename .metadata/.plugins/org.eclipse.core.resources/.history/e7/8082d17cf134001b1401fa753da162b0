@@ -1,0 +1,18 @@
+package model;
+
+public class GamePiece {
+
+	private BridgeEnum position;
+	
+	public BridgeEnum getPosiiton() {
+		return this.position;
+	}
+	
+	public void setPosition(BridgeEnum position) {
+		this.position = position;
+	}
+	
+	public GamePiece(BridgeEnum position) {
+		this.position = position;
+	}
+}

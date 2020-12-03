@@ -1,0 +1,25 @@
+package runner;
+
+import java.util.Scanner;
+
+import service.GamePieceService;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		GamePieceService GPS = new GamePieceService();
+		while(GPS.checkFoxAndGoose() && GPS.checkRiceAndGoose() && !GPS.checkWin()) {
+			System.out.println("===============================");
+			System.out.println(GPS.getPositions());
+			System.out.println("What would you like to move?");
+			System.out.println(GPS.getMoves());
+			System.out.println("===============================");
+			scan.reset();
+			String move = scan.nextLine();
+			GPS.movePiece(move);
+		}
+	}
+
+}
+

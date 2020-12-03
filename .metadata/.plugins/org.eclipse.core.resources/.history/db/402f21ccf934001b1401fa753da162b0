@@ -1,0 +1,93 @@
+package service;
+
+import model.BridgeEnum;
+import model.GamePiece;
+
+public class GamePieceService {
+
+	GamePiece farmer = new GamePiece(BridgeEnum.START), 
+			goose = new GamePiece(BridgeEnum.START),
+			rice = new GamePiece(BridgeEnum.START),
+			fox = new GamePiece(BridgeEnum.START);
+	
+	public boolean checkRiceAndGoose() {
+		if(goose.getPosition().equals(rice.getPosition())) {
+			return farmer.getPosition().equals(goose.getPosition());
+		}
+		return true;
+	}
+	
+	public boolean checkFoxAndGoose() {
+		if(goose.getPosition().equals(fox.getPosition())) {
+			return farmer.getPosition().equals(goose.getPosition());
+		}
+		return true;
+	}
+	
+	public boolean checkWin() {
+		if(
+			goose.getPosition().equals(BridgeEnum.FINISH)
+			&& rice.getPosition().equals(BridgeEnum.FINISH)
+			&& fox.getPosition().equals(BridgeEnum.FINISH)
+				) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String getMoves() {
+		String moves = "";
+		if(farmer.getPosition().equals(goose.getPosition())) {
+			moves += "Goose \n";
+		}
+		if(farmer.getPosition().equals(rice.getPosition())) {
+			moves += "Rice \n";
+		}
+		if(farmer.getPosition().equals(fox.getPosition())) {
+			moves += "Fox \n";
+		}
+		return moves;
+	}
+	
+	public String getPositions() {
+		String start = "START: ";
+		String finish = "FINISH: ";
+		if(farmer.getPosition().equals(BridgeEnum.START)) {
+			start += "YOU, ";
+		}else {
+			finish += "YOU, ";
+		}
+		if(goose.getPosition().equals(BridgeEnum.START)) {
+			start += "Goose, ";
+		}else {
+			finish += "Goose, ";
+		}
+		if(rice.getPosition().equals(BridgeEnum.START)) {
+			start += "Rice, ";
+		}else {
+			finish += "Rice, ";
+		}
+		if(fox.getPosition().equals(BridgeEnum.START)) {
+			start += "Fox ";
+		}else {
+			finish += "Fox ";
+		}
+		return start + "\n  ||\n  ||\n" + finish + "\n";
+	}
+	
+	//Some switch cases with enhanced if/else
+	public void movePiece(String name) {
+		switch(name) {
+		case "Goose": 
+			goose.setPosition((goose.getPosition().equals(BridgeEnum.START) ? BridgeEnum.FINISH : BridgeEnum.START));
+			farmer.setPosition(goose.getPosition());
+		case "Fox":
+			fox.setPosition((fox.getPosition().equals(BridgeEnum.START) ? BridgeEnum.FINISH : BridgeEnum.START));
+			farmer.setPosition(fox.getPosition());
+		case "Rice":
+			rice.setPosition((rice.getPosition().equals(BridgeEnum.START) ? BridgeEnum.FINISH : BridgeEnum.START));
+			farmer.setPosition(rice.getPosition());
+		}
+		
+	}
+}

@@ -1,0 +1,12 @@
+package runner;
+
+import model.BridgeEnum;
+import model.GamePiece;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

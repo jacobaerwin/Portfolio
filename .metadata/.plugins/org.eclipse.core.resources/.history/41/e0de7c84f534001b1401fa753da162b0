@@ -1,0 +1,15 @@
+package runner;
+
+import model.BridgeEnum;
+import model.GamePiece;
+import service.GamePieceService;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		GamePieceService GPS = new GamePieceService();
+		System.out.println(GPS.getMoves());
+	}
+
+}
+

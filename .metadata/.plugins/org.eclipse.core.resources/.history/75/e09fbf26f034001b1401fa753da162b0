@@ -1,0 +1,10 @@
+package model;
+
+public class Goose {
+
+	private BridgeEnum position = BridgeEnum.START;
+	
+	public BridgeEnum getPoisiton() {
+		return this.position;
+	}
+}
